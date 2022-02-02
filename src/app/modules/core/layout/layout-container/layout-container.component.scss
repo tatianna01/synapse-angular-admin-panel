@@ -2,3 +2,22 @@
     width: 500px;
     height: 500px;
 }
+
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position:relative;
+}
+
+mat-drawer {
+    width: 270px;
+}
+
+mat-drawer-container {
+    width: 100%;
+}
+
+.content-wrapper {
+    padding: 16px 24px;
+}
