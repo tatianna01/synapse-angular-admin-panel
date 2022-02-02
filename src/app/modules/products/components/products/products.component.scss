@@ -67,14 +67,17 @@
      }
 }
 
-.user-search input {
-     font-weight: normal;
-     line-height: 22px;
-     color: #161414;
-     opacity: 0.4;
-     max-width: 500px;
-     text-overflow: ellipsis;
-     width: 100%;
+.user-search  {
+     margin-bottom: 10px;
+     input {
+          font-weight: normal;
+          line-height: 22px;
+          color: #161414;
+          opacity: 0.4;
+          max-width: 500px;
+          text-overflow: ellipsis;
+          width: 100%;
+     }
 }
 
 .mat-form-field {

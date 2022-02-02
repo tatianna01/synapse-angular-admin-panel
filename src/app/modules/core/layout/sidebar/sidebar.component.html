@@ -6,39 +6,9 @@
     </div>
     <mat-divider></mat-divider>
     <div class="user-actions-list">
-        <mat-button-toggle-group fxLayout="column" name="favoriteColor" aria-label="Favorite Color">
-            <mat-button-toggle> 
-                <a class="action-label-link">
-                    <div class="action-label" fxLayout="row" fxLayoutAlign="start center">
-                        <mat-icon class="action-icon">dashboard</mat-icon>
-                        <span>Dashboard</span>
-                    </div>
-                </a>
-            </mat-button-toggle>
-            <mat-button-toggle> 
-                <a class="action-label-link">
-                    <div class="action-label" fxLayout="row" fxLayoutAlign="start center">
-                        <mat-icon class="action-icon">people</mat-icon>
-                        <span>Users</span>
-                    </div>
-                </a>
-            </mat-button-toggle>
-            <mat-button-toggle> 
-                <a class="action-label-link">
-                    <div class="action-label" fxLayout="row" fxLayoutAlign="start center">
-                        <mat-icon class="action-icon">lock_open</mat-icon>
-                        <span>Profile</span>
-                    </div>
-                </a>
-            </mat-button-toggle>
-            <mat-button-toggle> 
-                <a class="action-label-link" [routerLink]="'products'">
-                    <div class="action-label" fxLayout="row" fxLayoutAlign="start center">
-                        <mat-icon class="action-icon">image</mat-icon>
-                        <span>Products</span>
-                    </div>
-                </a>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
+        <button fxLayout="row" fxLayoutAlign="space-between center" mat-button [routerLinkActive]="['active']"><mat-icon class="action-icon material-icons-outlined">dashboard</mat-icon>Dashboard</button>
+        <button fxLayout="row" fxLayoutAlign="space-between center" mat-button [routerLinkActive]="['active']"><mat-icon class="action-icon material-icons-outlined">people</mat-icon>Users</button>
+        <button fxLayout="row" fxLayoutAlign="space-between center" mat-button [routerLinkActive]="['active']"><mat-icon class="action-icon material-icons-outlined">lock_open</mat-icon>Profile</button>
+        <button fxLayout="row" fxLayoutAlign="space-between center" mat-button [routerLinkActive]="['active']" routerLink="products"><mat-icon class="action-icon material-icons-outlined">image</mat-icon>Products</button>
     </div>
 </div>
