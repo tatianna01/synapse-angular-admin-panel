@@ -1,0 +1,44 @@
+<div class="sidenav">
+    <div class="user-icon" fxLayout="column">
+        <div class="user-img-wrapper"><img src="assets/images/user1.jpg" alt="user"></div>
+        <span class="user-name">Ivan Ivanov</span>
+        <small class="small-text">Brain director</small>
+    </div>
+    <div class="line"></div>
+    <div class="user-actions-list">
+        <mat-button-toggle-group fxLayout="column" name="favoriteColor" aria-label="Favorite Color">
+            <mat-button-toggle> 
+                <a class="action-label-link">
+                    <div class="action-label" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="action-icon">dashboard</mat-icon>
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+            </mat-button-toggle>
+            <mat-button-toggle> 
+                <a class="action-label-link">
+                    <div class="action-label" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="action-icon">people</mat-icon>
+                        <span>Users</span>
+                    </div>
+                </a>
+            </mat-button-toggle>
+            <mat-button-toggle> 
+                <a class="action-label-link">
+                    <div class="action-label" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="action-icon">lock_open</mat-icon>
+                        <span>Profile</span>
+                    </div>
+                </a>
+            </mat-button-toggle>
+            <mat-button-toggle> 
+                <a class="action-label-link" [routerLink]="'products'">
+                    <div class="action-label" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="action-icon">image</mat-icon>
+                        <span>Products</span>
+                    </div>
+                </a>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+</div>

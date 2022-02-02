@@ -1,0 +1,67 @@
+@import '../../../../../assets/styles/_variables.scss';
+
+.nav {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: $mainColor;
+    color: #ffff;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    position: relative;
+    padding: 14px 24px;
+
+    &-exit {
+        cursor: pointer;
+    }
+
+    a {
+        color:#ffff;
+    }
+}
+
+.main {
+    background-color: #F9FAFB;
+}
+
+.logo {
+    background-color: #ffff;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    position: relative;
+    margin-right: 8px;
+}
+
+.circle {
+    background-color: $mainColor;
+    position: absolute;
+    width: 31.45px;
+    height: 31.45px;
+    left: 2.27px;
+    top: calc(50% - 31.45px/2 - 0px);
+    border-radius: 50%;
+}
+
+.oval {
+    &-first {
+        position: absolute;
+        width: 28px;
+        height: 15.75px;
+        left: 4.3px;
+        top: calc(50% - 15.75px/2 - 5.62px);
+        background: #ffff;
+        border-radius: 50%;
+    }
+    &-second {
+        position: absolute;
+        width: 29.25px;
+        height: 18px;
+        left: 3.38px;
+        top: calc(50% - 18px/2 + 7.88px);
+        background: #ffff;
+        border-radius: 50%;
+    }
+  }

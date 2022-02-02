@@ -1,0 +1,118 @@
+@import '../../../../../assets/styles/_variables.scss';
+
+.app-products-list{
+     display: flex;
+     flex-wrap: wrap;
+}
+
+.products-header-image-wrapper img {
+    width: 100%;
+    display: block;
+}
+
+.products-header-image-wrapper {
+     display:inline-block;
+     position: relative;
+     background: linear-gradient(180deg, rgba(0, 180, 216, 0.47017) 0%, #1665D8 100%);
+}
+
+.products-header-image-wrapper:after {
+     content:'';
+     position:absolute;
+     left: 0; 
+     top: 0;
+     width: 100%; 
+     height: 100%;
+     display: inline-block;
+     mix-blend-mode: hard-light;
+     background: linear-gradient(180deg, rgba(0, 180, 216, 0.47017) 0%, #1665D8 100%);
+}
+
+.products {
+     &-category {
+          color: $smallTextColor;
+          font-size: 10px;
+     }
+
+     &-name {
+          font-weight: 500;
+          font-size: 20px;
+     }
+
+     &-title {
+          &-wrapper {
+               position:relative;
+               bottom: 2.5em;
+               left: 1em;
+          }
+          &-text {
+               margin-top: 15px;
+               margin: 1.5em 0 0 1em;
+          }
+          &-logo {
+               width: 100px;
+               height: 100px;
+               border-radius: 50%;
+               background-color: #FFFFFF;
+               position: relative;
+
+               img {
+                    max-width: 58px;
+                    width: 100%;
+                    position: absolute;
+                    top: 20px;
+                    left: 21px;
+               }
+          }
+     }
+}
+
+.user-search input {
+     font-weight: normal;
+     line-height: 22px;
+     color: #161414;
+     opacity: 0.4;
+     max-width: 500px;
+     text-overflow: ellipsis;
+     width: 100%;
+}
+
+.mat-form-field {
+     background-color: #FFFFFF;
+     font-size: 14px;
+     color: $smallTextColor;
+     max-width: 500px;
+     width: 100%;
+}
+
+:host ::ng-deep .mat-form-field-wrapper {
+     padding: 0 0 0 10px;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+     border: none;
+     display: flex;
+     width: 100%;
+}
+
+.icon {
+     margin: 0 1rem;
+     color: #AAAAAA;
+     line-height: 26px;
+     cursor: pointer;
+}
+
+.button-wrapper {
+     button {
+          background-color: $mainColor;
+          color: #FFFFFF;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+     }
+}
+
+.user-actions-wrapper {
+     margin-bottom: 1.5em;
+}
