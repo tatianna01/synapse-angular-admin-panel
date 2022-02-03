@@ -1,0 +1,25 @@
+<form [formGroup]="loginForm">
+    <div class="container" fxLayout="column" fxLayoutAlign="none center">
+        <div class="labels" fxLayout="column" fxLayoutAlign="start start">
+            <label class="login-label-small signup-label">Don’t have an account? <a class="link" [routerLink]="'/auth/register'">Sign Up</a></label>
+            <label class="login-label"> Sign In to Angular </label>
+            <label class="login-label-small"> Sign in on the internal platform </label>
+        </div>
+
+        <mat-form-field appearance="outline" class="login-field">
+            <mat-label class="label">Email Address</mat-label>
+            <input class="login-input" matInput formControlName="username">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="login-field">
+            <mat-label class="label">Password</mat-label>
+            <input matInput formControlName="password">
+        </mat-form-field>
+
+        <button class="submit-button" mat-flat-button 
+            [disabled]="!loginForm.valid"
+            type="submit" (click)="onSubmit()">
+            SIGN IN
+        </button>
+    </div>
+</form>

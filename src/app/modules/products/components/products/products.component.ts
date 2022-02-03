@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
-import { ProductsStateModel } from 'src/app/reducers/products/products.reducer';
-import { selectProducts } from 'src/app/reducers/products/products.selectors';
+import { selectProducts } from 'src/app/store/selectors/products.selectors';
+import { ProductsStateModel } from 'src/app/store/state/products.state';
 
 @Component({
   selector: 'app-products',
@@ -14,12 +14,29 @@ export class ProductsComponent implements OnInit {
 
   filteredString: string = '';
 
-  public products$: Observable<Product[]> = this.store$.pipe(select(selectProducts))
+  filteredProducts!: Product[];
+
+  products!: Product [];
+
+  products$: Observable<Product[]> = this.store$.pipe(select(selectProducts))
 
   constructor(private store$: Store<ProductsStateModel>) { }
 
   ngOnInit(): void {
+    this.products$.subscribe((products) => {
+      this.products = products;
+      this.filteredProducts = products;
+    })
+  }
 
+  onChange(value: string): void {
+    if (value === '') {
+      this.filteredProducts = this.products;
+    } else {
+        this.filteredProducts = this.products.filter((product: Product) => 
+        product.title === value ||
+        product.title.toLocaleLowerCase().startsWith(value.toLocaleLowerCase()))
+    }
   }
 
 }

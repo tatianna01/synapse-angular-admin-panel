@@ -1,12 +1,14 @@
 <div class="app-product-item">
     <mat-card>
-        <div class="app-product-item-img">
-            <img src="{{ product.image }}" alt="dropbox">
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center center">
-            <mat-card-title class="app-product-item-title">{{ product.title }}</mat-card-title>
-            <mat-card-content class="small">{{ product.content }}</mat-card-content>    
-        </div>
+        <mat-card-content class="card-content">
+            <div class="app-product-item-img">
+                <img src="{{ product.image }}" alt="dropbox">
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center center">
+                <mat-card-title class="app-product-item-title">{{ product.title }}</mat-card-title>
+                <mat-card-content class="small">{{ product.content }}</mat-card-content>    
+            </div>
+        </mat-card-content>
         <div class="line"></div>
         <mat-card-footer class="app-product-item-footer" fxLayout="row" fxLayoutAlign="space-around center">
             <div class="small-footer-text" fxLayout="row" fxLayoutAlign="center center"><mat-icon>access_time</mat-icon><span>{{ product.updated }}</span></div>

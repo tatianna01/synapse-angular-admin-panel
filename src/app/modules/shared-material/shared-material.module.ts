@@ -11,7 +11,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
@@ -29,7 +29,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonToggleModule,
     MatProgressBarModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCheckboxModule
   ]
 })
 export class SharedMaterialModuleModule { }

@@ -1,0 +1,92 @@
+@import '../../../../assets/styles/variables.scss';
+
+.container {
+    font-family: 'Roboto', sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-right: 60px;
+}
+
+.labels {
+    width: 100%;
+    max-width: 360px;
+    position: relative;
+}
+
+.login-label {
+    font-weight: 500;
+    font-size: 1.5em;
+    letter-spacing: -1.06px;
+    color: #212529;
+    margin-bottom: 4px;
+}
+
+.login-label-small {
+    font-weight: normal;
+    font-size: 0.9em;
+    color: #9EA0A5;
+    margin-bottom: 1.9em;
+}
+
+.signup-label {
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+}
+
+.link {
+    color: #9EA0A5;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.submit-button {
+    font-family: 'Roboto', sans-serif;
+    width:100%;
+    max-width: 360px;
+    background-color: $mainColor;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9em;
+    letter-spacing: 0.25px;
+}
+
+.login-field {
+    width: 100%;
+    max-width: 360px;
+}
+
+.login-input {
+    padding: 0;
+}
+
+.hint {
+    color: red;
+}
+
+mat-error, mat-hint {
+    width: 100%;
+    max-width: 360px;
+    font-size: 12px;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: $mainColor;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: $mainColor;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.8em 0;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+     border-top: 0.7em solid transparent;
+}
+
+:host ::ng-deep .mat-form-field-wrapper {
+     padding-bottom: 0.5em; 
+}

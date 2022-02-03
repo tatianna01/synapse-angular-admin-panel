@@ -16,11 +16,11 @@
     <div class="user-actions-wrapper" fxLayout="row wrap" fxLayoutAlign="space-between center">
         <mat-form-field class="user-search" floatLabel=never appearance="none" fxLayout='row' fxLayoutAlign="space-between center">
             <mat-icon class="icon">search</mat-icon>
-            <input type="text" matInput placeholder="Search users by name, id" [(ngModel)]="filteredString">
+            <input type="text" matInput placeholder="Search users by name, id" (ngModelChange)="onChange($event)" [(ngModel)]="filteredString">
         </mat-form-field>
         <div class="button-wrapper"><button mat-flat-button>NEW PRODUCT</button></div>
     </div>
-    <div class="app-products-list">
-        <app-product *ngFor="let product of (products$ | async) | filterProduct: filteredString" [product]="product"></app-product>
+    <div class="app-products-list" fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <app-product *ngFor="let product of filteredProducts" [product]="product"></app-product>
     </div>
 </div>

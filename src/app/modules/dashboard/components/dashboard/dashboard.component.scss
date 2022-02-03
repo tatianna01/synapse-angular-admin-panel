@@ -1,0 +1,96 @@
+@import '../../../../../assets/styles/variables.scss';
+
+.card {
+    &-wrapper {
+        background-color: #ffff;
+        max-width: 270px;
+        height: 152px;
+        width: 100%;
+        padding: 20px 24px 30px 24px;
+        margin-right: 20px;
+        min-width: 200px;
+        box-shadow: 0px 0px 0px 1px rgba(63, 63, 68, 0.05), 0px 1px 3px rgba(63, 63, 68, 0.15);
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+    &-info {
+        max-width: 300px;
+        width: 100%;
+    }
+    &-img img {
+        max-width: 64px;
+        width: 100%;
+    }
+}
+
+.title {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #66788A;
+    margin-bottom: 8px;
+}
+
+.amount {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #212529;
+    margin-bottom: 36px;
+}
+
+.interest {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #66788A;
+
+    span {
+        font-weight: 500;
+        font-size: 12px;
+        margin-right: 8px;
+        margin-left: 18px;
+        position: relative;
+    }
+
+    .icon {
+        position: absolute;
+        top: -3.5px;
+        right: 0.8em;
+    }
+}
+
+.red {
+    color: #BF0E08;
+}
+
+.green {
+    color: #47B881;
+}
+
+.white {
+    color: #ffff;
+}
+
+.top-dashboard-cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.graph {
+    img {
+        max-width: 1600px;
+        width: 100%;
+    }
+}
+
+.progress {
+    max-width: 300px;
+    width: 100%;
+}
+
+.blue {
+    background-color: $mainColor;
+    color: #ffff;
+}

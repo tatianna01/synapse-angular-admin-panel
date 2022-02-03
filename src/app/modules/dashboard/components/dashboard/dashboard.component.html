@@ -1,1 +1,54 @@
-<p>dashboard works!</p>
+<div class="dashboard-wrapper">
+    <div class="top-dashboard-cards" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="card-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="card-info">
+                <div class="title">BUDGET</div>
+                <div class="amount">{{(dashboard$ | async)?.budget.amount | currency: 'CAD':'symbol-narrow':'4.0'}}</div>
+                <div class="interest">
+                <span class="red"><mat-icon class="icon">arrow_drop_down</mat-icon>{{(dashboard$ | async)?.budget.interest}}%</span>Since last month</div>
+            </div>
+            <div class="card-img">
+                <img src="assets/images/icon1.png" alt="icon">
+            </div>
+        </div>
+        <div class="card-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="card-info">
+                <div class="title">TOTAL USERS</div>
+                <div class="amount">{{(dashboard$ | async)?.users.amount}}</div>
+                <div class="interest">
+                    <span class="green"><mat-icon class="icon">arrow_drop_up</mat-icon> {{(dashboard$ | async)?.users.interest}}%</span>Since last month
+                </div>
+            </div>
+            <div class="card-img">
+                <img src="assets/images/icon2.png" alt="icon">
+            </div>
+        </div>
+        <div class="card-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="card-info">
+                <div class="title">PROGRESS</div>
+                <div class="amount">{{(dashboard$ | async)?.progress}}%</div>
+                <div class="progress">
+                    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                </div>
+            </div>
+            <div class="card-img">
+                <img src="assets/images/icon3.png" alt="icon">
+            </div>
+        </div>
+        <div class="card-wrapper blue" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="card-info">
+                <div class="title white">TOTAL PROFIT</div>
+                <div class="amount white">{{(dashboard$ | async)?.profit.amount | currency:'CAD':'symbol-narrow':'4.2-2'}}%</div>
+                <div class="interest white">
+                    <span><mat-icon class="icon">arrow_drop_up</mat-icon> {{(dashboard$ | async)?.profit.interest}}%</span>Since last month
+                </div>
+            </div>
+            <div class="card-img">
+                <img src="assets/images/money.png" alt="icon">
+            </div>
+        </div>
+    </div>
+    <div class="graph">
+        <img src="assets/images/graph.png" alt="graph">
+    </div>
+</div>

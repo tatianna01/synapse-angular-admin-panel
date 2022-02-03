@@ -6,7 +6,7 @@ export interface ProductsStateModel {
     products: Product[]
 }
 
-const initialState: ProductsStateModel = {
+export const productsState: ProductsStateModel = {
     products: [
         {
           id: 1,
@@ -58,7 +58,3 @@ const initialState: ProductsStateModel = {
         },
       ]
 }
-
-export const productsReducer = (state = initialState) => {
-  return state;
-};
