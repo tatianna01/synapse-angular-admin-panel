@@ -5,13 +5,13 @@ export class User {
     phoneNumber?: string;
     email: string;
     createdAt: Date;
-    password: string;
+    password?: string;
     icon?: string;
     nickname?: string;
     country?: string;
     city?: string;
 
-    constructor(id: string, info: any, createdAt: Date, password: string, icon?: string) {
+    constructor(id: string, info: any, createdAt: Date, password?: string, icon?: string) {
         this.id = id,
         this.firstName = info.firstName,
         this.lastName = info.lastName,

@@ -1,14 +1,23 @@
 import { User } from "src/app/models/user.model";
-import { v4 as uuidv4 } from 'uuid';
 
+export interface Notifications {
+    emailNotifications: boolean,
+    pushNotifications: boolean,
+    textMessages: boolean,
+    phoneCalls: boolean,
+    messagesEmailNotifications: boolean,
+    messagesPushNotifications: boolean,
+    messagesTextMessages: boolean
+}
 export interface AuthStateModel {
     users: User[],
-    loggedInUser: User
+    loggedInUser: User,
+    notifications: Notifications
 }
 export const authState: AuthStateModel = {
     users: [
         {
-            id: uuidv4(),
+            id: 'ceed5391-4941-4444-896c-c39c455bd9e2',
             firstName: 'Masha',
             lastName: 'Zaruzhko',
             phoneNumber: '0508384567',
@@ -16,12 +25,12 @@ export const authState: AuthStateModel = {
             email: 'maria@gmail.com',
             createdAt: new Date(),
             password: '123456',
-            icon: 'assets/default.png',
+            icon: 'assets/images/default.png',
             country: 'Ukraine',
             city: 'Kyiv'
         },
         {
-            id: uuidv4(),
+            id: '9bdb34e7-12dd-480c-97dd-ff7a03263116',
             firstName: 'Nastya',
             lastName: 'Krasii',
             phoneNumber: '0508245667',
@@ -29,12 +38,12 @@ export const authState: AuthStateModel = {
             email: 'nastia@gmail.com',
             createdAt: new Date(),
             password: '123456',
-            icon: 'assets/default.png',
+            icon: 'assets/images/default.png',
             country: 'Ukraine',
             city: 'Kharkiv'
         },
         {
-            id: uuidv4(),
+            id: '2c8c50d4-6063-4952-a752-e6ffa6529b4d',
             firstName: 'Dima',
             lastName: 'Zalushni',
             phoneNumber: '0957884567',
@@ -42,12 +51,12 @@ export const authState: AuthStateModel = {
             email: 'dima@gmail.com',
             createdAt: new Date(),
             password: '123456',
-            icon: 'assets/default.png',
+            icon: 'assets/images/default.png',
             country: 'Ukraine',
             city: 'Lviv'
         },
         {
-            id: uuidv4(),
+            id: '9f48c89e-470c-4eec-a177-924094cb8740',
             firstName: 'Kostya',
             lastName: 'Starodub',
             phoneNumber: '0508484547',
@@ -55,12 +64,12 @@ export const authState: AuthStateModel = {
             email: 'kostia@gmail.com',
             createdAt: new Date(),
             password: '123456',
-            icon: 'assets/default.png',
+            icon: 'assets/images/default.png',
             country: 'Ukraine',
             city: 'Chernivtsi'
         },
         {
-            id: uuidv4(),
+            id: 'fb3e4c88-911a-4cfd-a264-fa78cbdb83f6',
             firstName: 'Lena',
             lastName: 'Fisun',
             phoneNumber: '0663284567',
@@ -68,10 +77,19 @@ export const authState: AuthStateModel = {
             email: 'lisa@gmail.com',
             createdAt: new Date(),
             password: '123456',
-            icon: 'assets/default.png',
+            icon: 'assets/images/default.png',
             country: 'Ukraine',
             city: 'Kyiv'
         }
     ],
-    loggedInUser: null
+    loggedInUser: null,
+    notifications: {
+        emailNotifications: false,
+        pushNotifications: false,
+        textMessages: false,
+        phoneCalls: false,
+        messagesEmailNotifications: false,
+        messagesPushNotifications: false,
+        messagesTextMessages: false
+    }
  }

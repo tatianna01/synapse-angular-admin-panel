@@ -13,6 +13,7 @@
      display: inline-block;
      position: relative;
      background: linear-gradient(180deg, rgba(0, 180, 216, 0.47017) 0%, #1665D8 100%);
+     width: 100%;
 }
 
 .products-header-image-wrapper:after {
@@ -118,4 +119,8 @@
 
 .user-actions-wrapper {
      margin-bottom: 1.5em;
+}
+
+:host {
+     width: 100%;
 }

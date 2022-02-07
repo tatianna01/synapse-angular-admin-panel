@@ -1,4 +1,3 @@
-// @import '../../../../../assets/styles/_searchbar.scss';
 @import '../../../../../assets/styles/_variables.scss';
 
 
@@ -102,10 +101,10 @@ th.mat-header-cell:last-of-type {
     width: 100%;
 }
 
-:host ::ng-deep .mat-form-field-wrapper {
-    padding: 0 0 0 10px;
-    width: 100%;
-}
+// :host ::ng-deep .mat-form-field-wrapper {
+//     padding: 0 0 0 10px;
+//     width: 100%;
+// }
 
 :host ::ng-deep .mat-form-field-infix {
     border: none;

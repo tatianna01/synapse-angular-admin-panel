@@ -20,6 +20,10 @@ export const authReducer = createReducer(
             ...user
         }: res)
     })),
+    on(AuthActions.updateNotifications, (state, { notifications }) => ({
+        ...state,
+        notifications: notifications
+    })),
     on(AuthActions.login, (state, { user }) => ({
         ...state,
         loggedInUser: user
@@ -28,4 +32,20 @@ export const authReducer = createReducer(
         ...state,
         loggedInUser: null
     })), 
+    on(AuthActions.changeIcon, (state, { icon, id }) => ({
+        ...state,
+        users: state.users.map(user => 
+            user.id === id ? {
+                ...user, 
+                icon: `../../../assets/images/${icon}`
+            }: user),
+    })),
+    on(AuthActions.removeIcon, (state, { icon, id }) => ({
+        ...state,
+        users: state.users.map(user => 
+            user.id === id ? {
+                ...user, 
+                icon: `../../../assets/images/default.png`
+            }: user),
+    })),
   );

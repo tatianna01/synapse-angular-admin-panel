@@ -8,6 +8,10 @@ import { AuthActions } from 'src/app/store/actions/auth.actions';
 import { usersSelector } from 'src/app/store/selectors/auth.selector';
 import { ProductsStateModel } from 'src/app/store/state/products.state';
 import { v4 as uuidv4 } from 'uuid';
+import { Notifications } from 'src/app/store/state/auth.state';
+
+
+export const USER_ID = 'userId';
 
 @Injectable({
   providedIn: 'root'
@@ -22,17 +26,32 @@ export class AuthService {
     private snackBar: MatSnackBar
   ) { }
 
-  login(user: User): void {
+  login(res: User): void {
     this.users$.subscribe((users) => {
-      if(users.find((res) => user.email === res.email && user.password === res.password)) {
-        this.store$.dispatch(AuthActions.login({ user }));
-        this.router.navigate(['app/dashboard']);
-      } else {
-        this.snackBar.open("This user doesn't exist!", '', {
-          duration: 5000
-        });
-      }
+      users.forEach(user => {
+        if (user.email === res.email && res.password === user.password) {
+          this.store$.dispatch(AuthActions.login({ user }));
+          localStorage.setItem(USER_ID, user.id);
+          this.router.navigate(['app/dashboard']);
+        }
+      }) 
+      !this.isAuthenticated() && this.snackBar.open("This user doesn't exist!", '', {duration: 5000});
     })
+  }
+
+  getLoggedInUserId(): string {
+    return localStorage.getItem(USER_ID);
+  }
+
+  logout(): void {
+    this.store$.dispatch(AuthActions.logout());
+    localStorage.removeItem(USER_ID);
+    this.router.navigate(['auth/login']);
+  }
+
+  isAuthenticated(): boolean {
+    const id = localStorage.getItem(USER_ID);
+    return !!id;
   }
 
   register(value: any): void {
@@ -53,5 +72,20 @@ export class AuthService {
     this.snackBar.open("User is successfully created!", '', {
       duration: 5000
     });
+  }
+
+  updateNotifications(notifications: Notifications): void {
+    this.store$.dispatch(AuthActions.updateNotifications({notifications}));
+    this.snackBar.open("Notifications are successfully updated!", '', {
+      duration: 5000
+    });
+  }
+
+  changeIcon(icon: string, id: string){
+    this.store$.dispatch(AuthActions.changeIcon({icon, id}))
+  }
+
+  removeIcon(icon: string, id: string){
+    this.store$.dispatch(AuthActions.removeIcon({icon, id}))
   }
 }

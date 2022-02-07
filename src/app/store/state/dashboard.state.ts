@@ -18,6 +18,8 @@ export interface DashboardStateModel {
     users: Users;
     progress: number;
     profit: Profit;
+    graphdataPhone: number[];
+    graphdataLaptop: number[];
 }
 
 export const dashboardState: DashboardStateModel = {
@@ -33,5 +35,7 @@ export const dashboardState: DashboardStateModel = {
    profit: {
     amount: 23200,
     interest: 16
-   }
+   },
+   graphdataPhone: [15700, 4300, 18000, 24000, 27000, 16500, 0],
+   graphdataLaptop:[10500, 19500, 7000, 28000, 28000, 22500, 0]
 }

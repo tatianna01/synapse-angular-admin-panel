@@ -1,0 +1,113 @@
+<div class="profile-wrapper" fxLayout="row" fxLayoutAlign="start start">
+    <div class="profile-card">
+        <mat-card>
+            <mat-card-content class="content" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="profile-info">
+                     <div class="profile-name">{{profile.firstName}} {{profile.lastName}}</div>
+                     <div class="profile-location">{{profile.country}} {{profile.city}}</div>
+                     <div class="profile-time">4:32PM (GMT-4)</div>
+                </div>
+                <div class="profile-img">
+                    <img src="{{ profile.icon }}" alt="Profile Image">
+                </div>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-footer class="footer" fxLayout="row" fxLayoutAlign="space-between center">
+                
+                <div class="upload-file-button">
+                    <label for="file-upload" class="button button-upload">
+                        UPLOAD PICTURE
+                    </label>
+                    <input id="file-upload" type="file" (change)="onFileSelected($event)"/>
+                </div>
+                <button mat-button class="button button-remove" (click)="onRemoveIcon()">REMOVE PICTURE</button>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+    <div class="profile-edit">
+        <div class="basic-profile-edit">
+            <div class="user-form-wrapper">
+                <div class="title" fxLayout="row" fxLayoutAlign="start center">
+                    <span>Basic Profile</span>
+                    <span>The information can be edited from your profile page</span>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="user-form">
+                    <form [formGroup]="profileForm">
+                        <mat-form-field appearance="outline" class="user-field">
+                            <mat-label class="label">First Name</mat-label>
+                            <input class="user-input" matInput formControlName="firstName">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="user-field">
+                            <mat-label class="label">Last Name</mat-label>
+                            <input class="user-input" matInput formControlName="lastName">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="user-field">
+                            <mat-label class="label">Email address</mat-label>
+                            <input type="email" class="user-input" matInput formControlName="email">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="user-field">
+                            <mat-label class="label">Phone number</mat-label>
+                            <input class="user-input" matInput formControlName="phoneNumber">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="user-field">
+                            <mat-label class="label">Country</mat-label>
+                            <input class="user-input" matInput formControlName="country">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="user-field">
+                            <mat-label class="label">City</mat-label>
+                            <input class="user-input" matInput formControlName="city">
+                        </mat-form-field>
+                    </form>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="update-button-wrapper">
+                    <button mat-flat-button (click)="onSaveSettings()" [disabled]="!profileForm.valid">SAVE SETTINGS</button>
+                </div>
+            </div>
+        </div>
+        <div class="notifications-edit">
+            <div class="title" fxLayout="row" fxLayoutAlign="start center">
+                <span>Notifications</span>
+                <span>Manage the notifications emailing</span>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="notifications-form">
+                <form [formGroup]="notificationsForm" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="notifications">
+                        <div class="form-title">Notifications</div>
+                        <div class="wrapper-check-box">
+                            <mat-checkbox formControlName="emailNotifications" class="register-check-box" color="primary">Email</mat-checkbox>
+                        </div>
+                        <div class="wrapper-check-box">
+                            <mat-checkbox formControlName="pushNotifications" class="register-check-box" color="primary">Push notifications</mat-checkbox>
+                        </div>
+                        <div class="wrapper-check-box">
+                            <mat-checkbox formControlName="textMessages" class="register-check-box" color="primary">Text Messages</mat-checkbox>
+                        </div>
+                        <div class="wrapper-check-box">
+                            <mat-checkbox formControlName="phoneCalls" class="register-check-box" color="primary">Phone Calls</mat-checkbox>
+                        </div>
+                    </div>
+                    
+                    <div class="messages">
+                        <div class="form-title">Messages</div>
+                        <div class="wrapper-check-box">
+                            <mat-checkbox formControlName="messagesEmailNotifications" class="register-check-box" color="primary">Email</mat-checkbox>
+                        </div>
+                        <div class="wrapper-check-box">
+                            <mat-checkbox formControlName="messagesPushNotifications" class="register-check-box" color="primary">Push notifications</mat-checkbox>
+                        </div>
+                        <div class="wrapper-check-box">
+                            <mat-checkbox formControlName="messagesTextMessages" class="register-check-box" color="primary">Text Messages</mat-checkbox>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="save-button-notifications-wrapper">
+                <button [disabled]="!notificationsForm.valid" mat-flat-button (click)="saveNotifications()">SAVE</button>
+            </div>
+        </div>
+    </div>
+</div>

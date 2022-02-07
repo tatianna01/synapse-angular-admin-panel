@@ -37,8 +37,14 @@
 
 .user-field {
     margin-right: 25px;
+    max-width: 280px;
+    width: 100%;
 }
 
 .user-field:last-of-type {
     margin-right: 0px;
+}
+
+:host {
+    width: 100%;
 }

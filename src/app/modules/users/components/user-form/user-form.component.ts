@@ -31,14 +31,14 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
+      id: new FormControl('', [Validators.required]),
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       nickname: new FormControl('', [Validators.minLength(5)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       phoneNumber: new FormControl(''),
       country: new FormControl(''),
-      city: new FormControl(''),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      city: new FormControl('')
     })
 
     this.activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((params: Params) => {
@@ -51,8 +51,8 @@ export class UserFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.userId ? this.authService.updateUser(new User(this.userId, this.userForm.value, this.user.createdAt, this.user.password))
-    : this.authService.createUser(new User(uuidv4(), this.userForm.value, new Date(), this.userForm.value.password, 'assets/images/default.png'));
+    this.userId ? this.authService.updateUser(new User(this.userForm.value.id, this.userForm.value, this.user.createdAt))
+    : this.authService.createUser(new User(uuidv4(), this.userForm.value, new Date(), 'assets/images/default.png'));
   }
   
   ngOnDestroy(): void {

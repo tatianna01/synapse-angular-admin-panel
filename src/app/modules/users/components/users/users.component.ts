@@ -42,5 +42,4 @@ export class UsersComponent implements OnInit, AfterViewInit  {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }

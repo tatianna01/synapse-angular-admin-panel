@@ -1,0 +1,177 @@
+@import '../../../../assets/styles/_input.scss';
+
+:host ::ng-deep .mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0px 0px 0px 1px rgba(63, 63, 68, 0.05), 0px 1px 3px rgba(63, 63, 68, 0.15);
+    border-radius: 4px;
+}
+.profile {
+    &-card {
+        margin-right: 20px;
+        max-width: 340px;
+        width: 100%;
+    }
+    &-wrapper {
+        font-family: Roboto;
+        font-style: normal;
+    }
+    &-name {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: -0.06px;
+        color: #212529;
+    }
+    &-location, &-time {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.05px;
+        color: #9EA0A5;
+    }
+    &-img {
+        border-radius: 13px;
+        margin-left: 50px;
+        img {
+            max-width: 140px;
+            width: 100%;
+        }
+    }
+}
+
+.button {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 1.25px;
+    &-upload {
+        color: $mainColor;
+        cursor: pointer;
+    }
+    &-remove {
+        color: #425A70;
+    }
+}
+
+.content {
+    padding: 14px;
+}
+
+.footer {
+    padding: 14px 24px;
+}
+
+.title {
+    padding: 16px;
+    :first-child {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: -0.05px;      
+        color:#3A3B3F;
+    }
+    :last-child {
+        margin-left: 16px;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        color: #66788A;
+    }
+}
+
+.user-form-wrapper {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 0px 1px rgba(63, 63, 68, 0.05), 0px 1px 3px rgba(63, 63, 68, 0.15);
+    border-radius: 4px;
+}
+
+.user-form {
+    padding: 24px 24px 0px 24px;
+}
+
+.user-field {
+    margin-right: 25px;
+    max-width: 240px;
+    width: 100%;
+}
+
+.update-button-wrapper {
+    padding: 24px;
+    button {
+        background-color: $mainColor;
+        color: #FFFFFF;
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        max-width: 150px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 1.25px;
+    }
+}
+
+.notifications-edit {
+    background: #FFFFFF;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.notifications-form {
+    padding: 24px;
+}
+
+.save-button-notifications-wrapper {
+    padding: 24px;
+    button {
+        background: rgba(98, 2, 238, 0.0001);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        box-sizing: border-box;
+        border-radius: 4px;
+        max-width: 120px;
+        width: 100%;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 1.25px;
+        color: $mainColor;
+    }
+}
+
+.wrapper-check-box {
+    width: 100%;
+    max-width: 360px;
+    margin-bottom: 1.06em;
+}
+
+:host ::ng-deep .mat-checkbox-checked.mat-primary .mat-checkbox-background {
+    background-color: $mainColor;
+}
+
+.register-check-box {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.form-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.05px;
+    color: #3A3B3F;
+    margin-bottom: 24px;
+}
+
+.notifications {
+    margin-right: 40px;
+}
+
+input[type="file"] {
+    display: none;
+}

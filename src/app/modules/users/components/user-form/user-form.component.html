@@ -4,67 +4,54 @@
     <div class="user-form">
         <form [formGroup]="userForm">
             <div class="user-general-info">
-
                 <mat-form-field appearance="outline" class="user-field">
                     <mat-label class="label">First Name</mat-label>
                     <input class="user-input" matInput formControlName="firstName">
                 </mat-form-field>
-
                 <mat-form-field appearance="outline" class="user-field">
                     <mat-label class="label">Last Name</mat-label>
                     <input class="user-input" matInput formControlName="lastName">
                 </mat-form-field>
-
                 <mat-form-field appearance="outline" class="user-field">
                     <mat-label class="label">Nickname</mat-label>
                     <input class="user-input" matInput formControlName="nickname">
                     <mat-hint appearance="none" class="hint" *ngIf="userForm.get('nickname')?.invalid && userForm.get('nickname')?.touched">Nickname must contain 6 or more symbols</mat-hint>
-                </mat-form-field>
-                        
+                </mat-form-field>                   
             </div>
 
             <div class="user-conection-info">
-
                 <mat-form-field appearance="outline" class="user-field">
                     <mat-label class="label">Email</mat-label>
                     <input class="user-input" type="email" matInput formControlName="email">
                     <mat-hint appearance="none" class="hint" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"> Invalid email </mat-hint>
                 </mat-form-field>
-
                 <mat-form-field appearance="outline" class="user-field">
                     <mat-label class="label">Phone number</mat-label>
                     <input class="user-input" matInput formControlName="phoneNumber">
                     <mat-hint appearance="none" class="hint" *ngIf="userForm.get('phoneNumber')?.invalid && userForm.get('phoneNumber')?.touched"> Invalid phone number </mat-hint>
-                </mat-form-field>
-
-                <ng-container *ngIf="!userId">
+                </mat-form-field>              
+                <ng-container *ngIf="userId">
                     <mat-form-field appearance="outline" class="user-field">
-                        <mat-label class="label">Password</mat-label>
-                        <input class="user-input" type="password" matInput formControlName="password">
-                        <mat-hint appearance="none" class="hint" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched"> Password must contain 6 or more symbols</mat-hint>
+                        <mat-label class="label">User ID</mat-label>
+                        <input class="user-input" matInput formControlName="id">
                     </mat-form-field>
                 </ng-container>
-
             </div>
 
             <div class="user-location-info">
-
                 <mat-form-field appearance="outline" class="user-field">
                     <mat-label class="label">Country</mat-label>
                     <input class="user-input" matInput formControlName="country">
                 </mat-form-field>
-
                 <mat-form-field appearance="outline" class="user-field">
                     <mat-label class="label">City</mat-label>
                     <input class="user-input" matInput formControlName="city">
                 </mat-form-field>
-
             </div>
-
         </form>
     </div>
     <mat-divider></mat-divider>
     <div class="update-button-wrapper">
-        <button mat-flat-button (click)="onSubmit()">{{userId ? 'UPDATE' : 'CREATE'}}</button>
+        <button [disabled]="!userForm.valid" mat-flat-button (click)="onSubmit()">{{userId ? 'UPDATE' : 'CREATE'}}</button>
     </div>
 </div>
