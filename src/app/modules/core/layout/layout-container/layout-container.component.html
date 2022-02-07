@@ -4,10 +4,10 @@
         <app-sidebar></app-sidebar>
     </mat-drawer>
     <mat-drawer-content class="content-wrapper" fxLayout="column" fxLayoutAlign="space-between start">
-       <div fxLayout="column" fxLayoutAlign="space-between start">
-            <router-outlet></router-outlet>
+       <router-outlet></router-outlet>         
+       <div class="footer">
             <div class="line"></div>
+            <app-footer></app-footer>
        </div>
-        <app-footer></app-footer>
     </mat-drawer-content>
 </mat-drawer-container>

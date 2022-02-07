@@ -1,0 +1,131 @@
+// @import '../../../../../assets/styles/_searchbar.scss';
+@import '../../../../../assets/styles/_variables.scss';
+
+
+@mixin button-style {
+    background-color: $mainColor;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.users-table {
+    table {
+        max-width: 1500px;
+        width: 100%;
+        table-layout: fixed;
+    }
+    td, th {
+        padding: 0 15px;
+    }
+    background: #FFFFFF;
+    border: 1px solid #E4E7EB;
+    border-radius: 4px;
+}
+
+.mat-header-cell {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #3A3B3F;
+    font-style: normal;
+}
+
+td.mat-cell:first-of-type{
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.05px;
+    color: #3A3B3F;
+}
+
+td.mat-cell:last-of-type {
+    font-weight: normal;
+    letter-spacing: -0.05px;
+    color: #9EA0A5;
+    text-align: right;
+}
+
+th.mat-header-cell:last-of-type {
+    text-align: right;
+}
+
+.user-icon {
+    width: 32px;
+    height: 32px;
+    background-color: $mainColor;
+    border-radius: 50%;
+    margin-right: 12px;
+    box-sizing: border-box;
+    padding:6px 6px;
+
+    span {
+        color: #FFFFFF;
+        font-weight: normal;
+        font-size: 14px;
+    }
+}
+
+.plus {
+    font-size: 32px;
+    font-weight: 100;
+    margin-right: 10px;
+}
+
+.edit-user-button {
+   @include button-style;
+}
+
+.user-search  {
+    margin-bottom: 10px;
+    input {
+         font-weight: normal;
+         line-height: 22px;
+         color: #161414;
+         opacity: 0.4;
+         max-width: 500px;
+         text-overflow: ellipsis;
+         width: 100%;
+    }
+}
+
+.edit {
+    text-align: center;
+}
+
+.mat-form-field {
+    background-color: #FFFFFF;
+    font-size: 14px;
+    color: $smallTextColor;
+    max-width: 500px;
+    width: 100%;
+}
+
+:host ::ng-deep .mat-form-field-wrapper {
+    padding: 0 0 0 10px;
+    width: 100%;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+    border: none;
+    display: flex;
+    width: 100%;
+}
+
+.icon {
+    margin: 0 1rem;
+    color: #AAAAAA;
+    line-height: 26px;
+    cursor: pointer;
+}
+
+.button-wrapper {
+    button {
+        @include button-style;
+    }
+}
+
+.user-actions-wrapper {
+    margin: 1em 0;
+}

@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { dashboardNode, DashboardStateModel } from "../state/dashboard.state";
+import { createFeatureSelector } from "@ngrx/store";
+import { DashboardStateModel } from "../state/dashboard.state";
 
-export const selectDashboardFeature = createFeatureSelector<DashboardStateModel>(dashboardNode);
+export const selectDashboardFeature = createFeatureSelector<DashboardStateModel>('dashboard');

@@ -1,19 +1,22 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
+import { authReducer } from './reducers/auth.reducer';
 import { dashboardReducer } from './reducers/dashboard.reducers';
 import { productsReducer } from './reducers/products.reducer';
-import { dashboardNode, DashboardStateModel } from './state/dashboard.state';
-import { productsNode, ProductsStateModel } from './state/products.state';
+import { AuthStateModel } from './state/auth.state';
+import { DashboardStateModel } from './state/dashboard.state';
+import { ProductsStateModel } from './state/products.state';
 
 export interface State {
-  [productsNode]: ProductsStateModel;
-  [dashboardNode]: DashboardStateModel;
+  products: ProductsStateModel;
+  dashboard: DashboardStateModel;
+  auth: AuthStateModel
 }
 
 export const reducers: ActionReducerMap<State> = {
-  [productsNode]: productsReducer,
-  [dashboardNode]: dashboardReducer
+  products: productsReducer,
+  dashboard: dashboardReducer,
+  auth: authReducer
 };
-
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

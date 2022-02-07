@@ -1,7 +1,4 @@
 import { Product } from "src/app/models/product.model";
-
-export const productsNode ='products';
-
 export interface ProductsStateModel {
     products: Product[]
 }

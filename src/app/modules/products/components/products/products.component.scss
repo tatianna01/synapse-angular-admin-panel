@@ -10,7 +10,7 @@
 }
 
 .products-header-image-wrapper {
-     display:inline-block;
+     display: inline-block;
      position: relative;
      background: linear-gradient(180deg, rgba(0, 180, 216, 0.47017) 0%, #1665D8 100%);
 }
@@ -89,6 +89,7 @@
 
 :host ::ng-deep .mat-form-field-wrapper {
      padding: 0 0 0 10px;
+     width: 100%;
 }
 
 :host ::ng-deep .mat-form-field-infix {

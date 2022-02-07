@@ -12,8 +12,6 @@ import { ProductsStateModel } from 'src/app/store/state/products.state';
 })
 export class ProductsComponent implements OnInit {
 
-  filteredString: string = '';
-
   filteredProducts!: Product[];
 
   products!: Product [];

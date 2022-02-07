@@ -10,12 +10,16 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { reducers, metaReducers } from './store';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
     BrowserModule,
     CoreModule,
     BrowserAnimationsModule,

@@ -24,17 +24,19 @@
 
         <mat-form-field appearance="outline" class="login-field">
             <mat-label class="label">Email Address</mat-label>
-            <input class="login-input" matInput formControlName="emailAddress">
+            <input class="login-input" matInput type="email" formControlName="email">
+            <mat-hint appearance="none" class="hint" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"> Invalid email</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="login-field">
             <mat-label class="label">Password</mat-label>
-            <input class="login-input" matInput formControlName="password">
+            <input class="login-input" matInput type="password" formControlName="password">
+            <mat-hint appearance="none" class="hint" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"> Password must contain 6 or more symbols</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="login-field">
             <mat-label class="label">Confirm password</mat-label>
-            <input class="login-input" matInput formControlName="confirmPassword">
+            <input class="login-input" type="password" matInput formControlName="confirmPassword">
             <mat-hint appearance="none" class="hint" *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched"> Password must contain 6 or more symbols </mat-hint>
         </mat-form-field>
 

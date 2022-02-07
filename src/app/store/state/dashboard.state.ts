@@ -1,5 +1,3 @@
-export const dashboardNode ='dashboard';
-
 export interface Budget {
     amount: number;
     interest: number;

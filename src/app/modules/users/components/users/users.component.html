@@ -1,0 +1,52 @@
+<div class="user-actions-wrapper" fxLayout="row wrap" fxLayoutAlign="space-between center">
+  <mat-form-field class="user-search" floatLabel=never appearance="none" fxLayout='row' fxLayoutAlign="space-between center">
+    <mat-icon class="icon">search</mat-icon>
+    <input type="text" matInput placeholder="Search users by name, id" (keyup)="applyFilter($event.target.value)">
+  </mat-form-field>
+  <div class="button-wrapper"><button routerLink="create" mat-flat-button fxLayout="row" fxLayoutAlign="center center"> <span class="plus">+</span> <span>ADD USER</span> </button></div>
+</div>
+
+<div class="users-table">
+  <table mat-table matSort [dataSource]="dataSource" class=""mat-elevation-z8> 
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Users </th>
+        <td mat-cell *matCellDef="let element">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="user-icon"><span>{{element.firstName[0]}}{{element.lastName[0]}}</span></div>
+            <span>{{element.firstName}} {{element.lastName}} </span>
+          </div>
+        </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> User ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+     
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef class="edit"> Edit user </th>
+        <td mat-cell *matCellDef="let element" class="edit">
+          <button class="edit-user-button" mat-flat-button [routerLink]="['edit', element.id]">Edit</button>
+        </td>
+      </ng-container>
+
+       <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef> Account Created </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdAt | date: "MM/dd/yy"}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[2, 5, 10]" aria-label="Select page of users"></mat-paginator>
+</div>

@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/variables.scss';
+@import '../../../../assets/styles/_input.scss';
 
 .container {
     font-family: 'Roboto', sans-serif;
@@ -25,7 +25,6 @@
     font-weight: normal;
     font-size: 0.9em;
     color: #9EA0A5;
-    margin-bottom: 1.9em;
 }
 
 .signup-label {
@@ -42,7 +41,7 @@
 
 .submit-button {
     font-family: 'Roboto', sans-serif;
-    width:100%;
+    width: 100%;
     max-width: 360px;
     background-color: $mainColor;
     color: #FFFFFF;
@@ -52,9 +51,14 @@
     letter-spacing: 0.25px;
 }
 
+.button-margin {
+    margin-top: 10px;
+}
+
 .login-field {
     width: 100%;
     max-width: 360px;
+    margin-top: 10px;
 }
 
 .login-input {
@@ -62,6 +66,7 @@
 }
 
 .hint {
+    margin-top: 10px;
     color: red;
 }
 
@@ -71,22 +76,18 @@ mat-error, mat-hint {
     font-size: 12px;
 }
 
-:host ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color: $mainColor;
-}
-
-:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
-    color: $mainColor;
-}
-
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 0.8em 0;
 }
 
 :host ::ng-deep .mat-form-field-infix {
-     border-top: 0.7em solid transparent;
+    border-top: 0.7em solid transparent;
 }
 
 :host ::ng-deep .mat-form-field-wrapper {
-     padding-bottom: 0.5em; 
+    padding-bottom: 0.5em; 
+}
+
+:host ::ng-deep .mat-checkbox-checked.mat-primary .mat-checkbox-background {
+    background-color: $mainColor;
 }

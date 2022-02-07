@@ -12,6 +12,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -30,7 +33,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatProgressBarModule,
     MatSidenavModule,
     MatDividerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class SharedMaterialModuleModule { }
