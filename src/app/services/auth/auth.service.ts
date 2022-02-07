@@ -54,10 +54,9 @@ export class AuthService {
     return !!id;
   }
 
-  register(value: any): void {
-    const user = new User(uuidv4(), value, new Date(), value.password, 'assets/images/default.png');
+  register(user: User): void {
     this.store$.dispatch(AuthActions.register({ user }));
-    this.router.navigate(['app/dashboard']);
+    this.router.navigate(['auth/login']);
   }
 
   updateUser(user: User): void {

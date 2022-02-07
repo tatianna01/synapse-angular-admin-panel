@@ -36,5 +36,5 @@ export class ProductsComponent implements OnInit {
         product.title.toLocaleLowerCase().startsWith(value.toLocaleLowerCase()))
     }
   }
-
+  
 }
