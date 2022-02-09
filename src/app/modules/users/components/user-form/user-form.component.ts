@@ -9,6 +9,7 @@ import { usersSelector } from 'src/app/store/selectors/auth.selector';
 import { AuthStateModel } from 'src/app/store/state/auth.state';
 import { v4 as uuidv4 } from 'uuid';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Constants, PHONE_REGEX } from 'src/app/constants/constants';
 
 @Component({
   selector: 'app-user-form',
@@ -16,6 +17,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit, OnDestroy {
+
+  readonly constants: typeof Constants = Constants;
 
   userForm: FormGroup;
   userId: string;
@@ -31,14 +34,14 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
-      id: new FormControl('', [Validators.required]),
+      id: new FormControl(''),
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
-      nickname: new FormControl('', [Validators.minLength(5)]),
+      nickname: new FormControl('', [Validators.minLength(6)]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phoneNumber: new FormControl(''),
-      country: new FormControl(''),
-      city: new FormControl('')
+      phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(Constants.PHONE_LENGTH), Validators.pattern(PHONE_REGEX)]),
+      country: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required])
     })
 
     this.activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((params: Params) => {
@@ -51,8 +54,8 @@ export class UserFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.userId ? this.authService.updateUser(new User(this.userForm.value.id, this.userForm.value, this.user.createdAt))
-    : this.authService.createUser(new User(uuidv4(), this.userForm.value, new Date(), 'assets/images/default.png'));
+    this.userId ? this.authService.updateUser(new User(this.userForm.value.id, this.userForm.value, this.user.createdAt, this.user.password, this.user.icon, this.userForm.value.nickname))
+    : this.authService.createUser(new User(uuidv4(), this.userForm.value, new Date(), this.user.password, 'assets/images/default.png', this.userForm.value.nickname));
   }
   
   ngOnDestroy(): void {

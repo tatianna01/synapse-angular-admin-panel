@@ -1,0 +1,10 @@
+@import '_variables.scss';
+
+.mat-flat-button.mat-button-disabled.mat-button-disabled {
+    background-color: $mainColor;
+    opacity: 0.5;
+}
+
+.mat-flat-button.mat-button-disabled.mat-button-disabled {
+    color: #fff;
+}

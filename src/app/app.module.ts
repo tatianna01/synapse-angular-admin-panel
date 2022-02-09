@@ -9,8 +9,9 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { reducers, metaReducers } from './store';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
     AppRoutingModule,
     StoreModule,
     ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot(reducers, {
       metaReducers

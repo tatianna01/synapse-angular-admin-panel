@@ -3,9 +3,11 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { User } from 'src/app/models/user.model';
-import { loggedInUserSelector, usersSelector } from 'src/app/store/selectors/auth.selector';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { usersSelector } from 'src/app/store/selectors/auth.selector';
 import { AuthStateModel } from 'src/app/store/state/auth.state';
 import { CustomPaginator } from './CustomPaginator';
 
@@ -19,19 +21,22 @@ import { CustomPaginator } from './CustomPaginator';
 })
 export class UsersComponent implements OnInit, AfterViewInit  {
 
-  displayedColumns: string[] = ['name', 'id', 'phoneNumber', 'email', 'edit', 'createdAt'];
+  displayedColumns: string[] = ['name', 'id', 'phoneNumber', 'email', 'createdAt', 'edit'];
   dataSource: any;
 
-  loggedInUser$: Observable<User> = this.store$.pipe(select(loggedInUserSelector))
   users$: Observable<User[]> = this.store$.pipe(select(usersSelector))
-
+  destroy$: Subject<boolean> = new Subject<boolean>();
+  
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private store$: Store<AuthStateModel>) { }
+  constructor(
+    private store$: Store<AuthStateModel>,
+    private authService: AuthService,
+  ) { }
 
-  ngOnInit(): void {
-    this.users$.subscribe((res) => this.dataSource = new MatTableDataSource<User>(res));
+  ngOnInit(): void {  
+    this.users$.pipe(takeUntil(this.destroy$)).subscribe((res) => this.dataSource = new MatTableDataSource<User>(res));
   }
 
   ngAfterViewInit(): void {

@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { User } from 'src/app/models/user.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthActions } from 'src/app/store/actions/auth.actions';
-import { usersSelector } from 'src/app/store/selectors/auth.selector';
 import { ProductsStateModel } from 'src/app/store/state/products.state';
-import { v4 as uuidv4 } from 'uuid';
 import { Notifications } from 'src/app/store/state/auth.state';
 
 
 export const USER_ID = 'userId';
+export const REGISTERED_USER = 'registered-user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  users$: Observable<User[]> = this.store$.pipe(select(usersSelector))
 
   constructor(
     private router: Router, 
@@ -26,17 +22,11 @@ export class AuthService {
     private snackBar: MatSnackBar
   ) { }
 
-  login(res: User): void {
-    this.users$.subscribe((users) => {
-      users.forEach(user => {
-        if (user.email === res.email && res.password === user.password) {
-          this.store$.dispatch(AuthActions.login({ user }));
-          localStorage.setItem(USER_ID, user.id);
-          this.router.navigate(['app/dashboard']);
-        }
-      }) 
-      !this.isAuthenticated() && this.snackBar.open("This user doesn't exist!", '', {duration: 5000});
-    })
+  login(user: User): void {
+    this.logoutFromLocalStorage();
+    this.store$.dispatch(AuthActions.login({ user }));
+    localStorage.setItem(USER_ID, user.id);
+    this.router.navigate(['app/dashboard']);
   }
 
   getLoggedInUserId(): string {
@@ -44,9 +34,13 @@ export class AuthService {
   }
 
   logout(): void {
-    this.store$.dispatch(AuthActions.logout());
-    localStorage.removeItem(USER_ID);
+    this.logoutFromLocalStorage();
     this.router.navigate(['auth/login']);
+  }
+
+  logoutFromLocalStorage(): void {
+    localStorage.removeItem(USER_ID);
+    localStorage.removeItem(REGISTERED_USER);
   }
 
   isAuthenticated(): boolean {
@@ -54,14 +48,39 @@ export class AuthService {
     return !!id;
   }
 
-  register(user: User): void {
+  isRegistered(): boolean {
+    const user = localStorage.getItem(REGISTERED_USER);
+    return !!user;
+  }
+
+  pushRegisteredUserToStore(): void {
+    const user = this.getRegisteredUser();
     this.store$.dispatch(AuthActions.register({ user }));
-    this.router.navigate(['auth/login']);
+  }
+
+  register(user: User): void {
+    this.logoutFromLocalStorage();
+    this.store$.dispatch(AuthActions.register({ user }));
+    localStorage.setItem(REGISTERED_USER, JSON.stringify(user));
+    localStorage.setItem(USER_ID, user.id);
+    this.router.navigate(['app/dashboard']);
+  }
+
+  getRegisteredUser(): User {
+    return JSON.parse(localStorage.getItem(REGISTERED_USER));
   }
 
   updateUser(user: User): void {
     this.store$.dispatch(AuthActions.updateUser({user}));
     this.snackBar.open("User is successfully updated!", '', {
+      duration: 5000
+    });
+    this.router.navigate(['app/users']);
+  }
+
+  updateProfile(user: User): void {
+    this.store$.dispatch(AuthActions.updateUser({user}));
+    this.snackBar.open("Your profile is successfully updated!", '', {
       duration: 5000
     });
   }
@@ -71,6 +90,7 @@ export class AuthService {
     this.snackBar.open("User is successfully created!", '', {
       duration: 5000
     });
+    this.router.navigate(['app/users']);
   }
 
   updateNotifications(notifications: Notifications): void {
@@ -80,11 +100,17 @@ export class AuthService {
     });
   }
 
-  changeIcon(icon: string, id: string){
-    this.store$.dispatch(AuthActions.changeIcon({icon, id}))
+  changeIcon(icon: any, id: string) {
+    this.store$.dispatch(AuthActions.changeIcon({icon, id}));
+    this.snackBar.open("Your profile image is successfully changed!", '', {
+      duration: 5000
+    });
   }
 
-  removeIcon(icon: string, id: string){
-    this.store$.dispatch(AuthActions.removeIcon({icon, id}))
+  removeIcon(id: string){
+    this.store$.dispatch(AuthActions.removeIcon({id}));
+    this.snackBar.open("Your profile image is successfully deleted", '', {
+      duration: 5000
+    });
   }
 }

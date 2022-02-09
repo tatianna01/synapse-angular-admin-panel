@@ -31,6 +31,22 @@
     width:100%
 }
 
+.submit-button {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    max-width: 200px;
+    background-color: $mainColor;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9em;
+    letter-spacing: 0.25px;
+}
+
+.button-margin {
+    margin-top: 10px;
+}
+
 .user-form {
     margin: 33px 0 20px 0;
 }
@@ -47,4 +63,12 @@
 
 :host {
     width: 100%;
+}
+
+.assistive-text {
+    color: $mainColor;
+}
+
+.hint {
+    color: red;
 }

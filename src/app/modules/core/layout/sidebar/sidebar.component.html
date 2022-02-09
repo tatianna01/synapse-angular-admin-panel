@@ -1,8 +1,7 @@
 <div class="sidenav">
     <div class="user-icon" fxLayout="column">
-        <div class="user-img-wrapper"><img src="assets/images/user1.jpg" alt="user"></div>
-        <span class="user-name">Ivan Ivanov</span>
-        <small class="small-text">Brain director</small>
+        <div class="user-img-wrapper"><img src="{{ user.icon }}" alt="User Icon"></div>
+        <span class="user-name">{{user.firstName}} {{user.lastName}}</span>
     </div>
     <mat-divider></mat-divider>
     <div class="user-actions-list">

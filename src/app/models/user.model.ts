@@ -11,7 +11,7 @@ export class User {
     country?: string;
     city?: string;
 
-    constructor(id: string, info: any, createdAt: Date, password?: string, icon?: string) {
+    constructor(id: string, info: any, createdAt: Date, password?: string, icon?: string, nickname?: string) {
         this.id = id,
         this.firstName = info.firstName,
         this.lastName = info.lastName,
@@ -20,7 +20,7 @@ export class User {
         this.createdAt = createdAt,
         this.password = password,
         this.icon = icon,
-        this.nickname = info.nickname,
+        this.nickname = nickname,
         this.country = info.country,
         this.city = info.city
     }

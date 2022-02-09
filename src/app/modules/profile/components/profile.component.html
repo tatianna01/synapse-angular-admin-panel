@@ -12,8 +12,7 @@
                 </div>
             </mat-card-content>
             <mat-divider></mat-divider>
-            <mat-card-footer class="footer" fxLayout="row" fxLayoutAlign="space-between center">
-                
+            <mat-card-footer class="footer" fxLayout="row" fxLayoutAlign="space-between center">    
                 <div class="upload-file-button">
                     <label for="file-upload" class="button button-upload">
                         UPLOAD PICTURE
@@ -37,26 +36,33 @@
                         <mat-form-field appearance="outline" class="user-field">
                             <mat-label class="label">First Name</mat-label>
                             <input class="user-input" matInput formControlName="firstName">
+                            <mat-hint appearance="none" class="hint" *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched"> Please specify your first name </mat-hint>
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="user-field">
                             <mat-label class="label">Last Name</mat-label>
                             <input class="user-input" matInput formControlName="lastName">
+                            <mat-hint appearance="none" class="hint" *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched"> Please specify your last name </mat-hint>
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="user-field">
                             <mat-label class="label">Email address</mat-label>
                             <input type="email" class="user-input" matInput formControlName="email">
+                            <mat-hint appearance="none" class="hint" *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched"> Invalid email </mat-hint>
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="user-field">
                             <mat-label class="label">Phone number</mat-label>
                             <input class="user-input" matInput formControlName="phoneNumber">
-                        </mat-form-field>
+                            <mat-hint class="hint" *ngIf="profileForm.get('phoneNumber').value && profileForm.get('phoneNumber')?.invalid && (profileForm.get('phoneNumber')?.dirty || profileForm.get('phoneNumber')?.touched)"> Invalid phone number </mat-hint>
+                            <mat-hint *ngIf="!profileForm.get('phoneNumber').value" class="assistive-text">Enter number in example format: 1-(618)312-3065</mat-hint>
+                        </mat-form-field> 
                         <mat-form-field appearance="outline" class="user-field">
                             <mat-label class="label">Country</mat-label>
                             <input class="user-input" matInput formControlName="country">
+                            <mat-hint *ngIf="profileForm.get('country')?.invalid && profileForm.get('country')?.touched" class="hint">Please specify your country</mat-hint>
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="user-field">
                             <mat-label class="label">City</mat-label>
                             <input class="user-input" matInput formControlName="city">
+                            <mat-hint *ngIf="profileForm.get('city')?.invalid && profileForm.get('city')?.touched" class="hint">Please specify your city</mat-hint>
                         </mat-form-field>
                     </form>
                 </div>

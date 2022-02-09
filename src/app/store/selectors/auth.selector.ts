@@ -9,11 +9,6 @@ export const usersSelector = createSelector(
     (state: AuthStateModel): User[] => state.users
 )
 
-export const loggedInUserSelector = createSelector(
-    selectAuthFeature,
-    (state: AuthStateModel): User => state.loggedInUser
-)
-
 export const notificationsSelector = createSelector(
     selectAuthFeature,
     (state: AuthStateModel): Notifications => state.notifications

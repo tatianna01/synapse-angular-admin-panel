@@ -1,6 +1,6 @@
 <div class="dashboard-wrapper">
-    <div class="top-dashboard-cards" fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="card-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="top-dashboard-cards">
+        <div class="card-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
             <div class="card-info">
                 <div class="title">BUDGET</div>
                 <div class="amount">{{(dashboard$ | async)?.budget.amount | currency: 'CAD':'symbol-narrow':'4.0'}}</div>
@@ -11,7 +11,7 @@
                 <img src="assets/images/icon1.png" alt="icon">
             </div>
         </div>
-        <div class="card-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="card-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
             <div class="card-info">
                 <div class="title">TOTAL USERS</div>
                 <div class="amount">{{(dashboard$ | async)?.users.amount}}</div>
@@ -23,7 +23,7 @@
                 <img src="assets/images/icon2.png" alt="icon">
             </div>
         </div>
-        <div class="card-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="card-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
             <div class="card-info">
                 <div class="title">PROGRESS</div>
                 <div class="amount">{{(dashboard$ | async)?.progress}}%</div>
@@ -35,7 +35,7 @@
                 <img src="assets/images/icon3.png" alt="icon">
             </div>
         </div>
-        <div class="card-wrapper blue" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="card-wrapper blue" fxLayout="row" fxLayoutAlign="space-between start">
             <div class="card-info">
                 <div class="title white">TOTAL PROFIT</div>
                 <div class="amount white">{{(dashboard$ | async)?.profit.amount | currency:'CAD':'symbol-narrow':'4.2-2'}}%</div>
@@ -48,7 +48,12 @@
             </div>
         </div>
     </div>
-    <div class="graph">
+    <div class="graph" fxLayout="column">
+        <div class="graph-info" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="graph-info-text users-device">Users by device</div>
+            <div class="graph-info-text last-days" fxLayout="row" fxLayoutAlign="center center"><span>Last 7 days</span><mat-icon class="graph-icon">arrow_drop_down</mat-icon></div>
+        </div>
         <div echarts [options]="chartOption" class="demo-chart"></div>
+        <div fxLayout="row" fxLayoutAlign="end center" class="graph-info-text audience">Audience Overview <mat-icon class="audience-icon">arrow_drop_up</mat-icon></div>
     </div>
 </div>

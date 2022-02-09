@@ -93,7 +93,7 @@
 
 .user-field {
     margin-right: 25px;
-    max-width: 240px;
+    max-width: 300px;
     width: 100%;
 }
 
@@ -174,4 +174,12 @@
 
 input[type="file"] {
     display: none;
+}
+
+.assistive-text {
+    color: $mainColor;
+}
+
+.hint {
+    color: red;
 }

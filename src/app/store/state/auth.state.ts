@@ -11,7 +11,6 @@ export interface Notifications {
 }
 export interface AuthStateModel {
     users: User[],
-    loggedInUser: User,
     notifications: Notifications
 }
 export const authState: AuthStateModel = {
@@ -20,7 +19,7 @@ export const authState: AuthStateModel = {
             id: 'ceed5391-4941-4444-896c-c39c455bd9e2',
             firstName: 'Masha',
             lastName: 'Zaruzhko',
-            phoneNumber: '0508384567',
+            phoneNumber: '1-(618)312-3065',
             nickname: 'maria05',
             email: 'maria@gmail.com',
             createdAt: new Date(),
@@ -33,7 +32,7 @@ export const authState: AuthStateModel = {
             id: '9bdb34e7-12dd-480c-97dd-ff7a03263116',
             firstName: 'Nastya',
             lastName: 'Krasii',
-            phoneNumber: '0508245667',
+            phoneNumber: '7-(648)993-5934',
             nickname: 'nasttia',
             email: 'nastia@gmail.com',
             createdAt: new Date(),
@@ -46,7 +45,7 @@ export const authState: AuthStateModel = {
             id: '2c8c50d4-6063-4952-a752-e6ffa6529b4d',
             firstName: 'Dima',
             lastName: 'Zalushni',
-            phoneNumber: '0957884567',
+            phoneNumber: '3-(459)237-2205',
             nickname: 'dimaa33',
             email: 'dima@gmail.com',
             createdAt: new Date(),
@@ -59,7 +58,7 @@ export const authState: AuthStateModel = {
             id: '9f48c89e-470c-4eec-a177-924094cb8740',
             firstName: 'Kostya',
             lastName: 'Starodub',
-            phoneNumber: '0508484547',
+            phoneNumber: '9-(091)354-5499',
             nickname: 'kosttia23',
             email: 'kostia@gmail.com',
             createdAt: new Date(),
@@ -72,7 +71,7 @@ export const authState: AuthStateModel = {
             id: 'fb3e4c88-911a-4cfd-a264-fa78cbdb83f6',
             firstName: 'Lena',
             lastName: 'Fisun',
-            phoneNumber: '0663284567',
+            phoneNumber: '4-(590)461-3734',
             nickname: 'lisa09',
             email: 'lisa@gmail.com',
             createdAt: new Date(),
@@ -82,7 +81,6 @@ export const authState: AuthStateModel = {
             city: 'Kyiv'
         }
     ],
-    loggedInUser: null,
     notifications: {
         emailNotifications: false,
         pushNotifications: false,

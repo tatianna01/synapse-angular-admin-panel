@@ -3,9 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Constants, PHONE_REGEX } from 'src/app/constants/constants';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { loggedInUserSelector, notificationsSelector, stateSelector, usersSelector } from 'src/app/store/selectors/auth.selector';
+import { notificationsSelector, usersSelector } from 'src/app/store/selectors/auth.selector';
 import { AuthStateModel, Notifications } from 'src/app/store/state/auth.state';
 
 @Component({
@@ -15,19 +16,19 @@ import { AuthStateModel, Notifications } from 'src/app/store/state/auth.state';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
 
+  readonly constants: typeof Constants = Constants;
+
   profileForm: FormGroup;
   notificationsForm: FormGroup;
   profile: User;
-  selectedFile:any = null;
 
   users$: Observable<User[]> = this.store$.pipe(select(usersSelector))
-  loggedInUserSelector$: Observable<User> = this.store$.pipe(select(loggedInUserSelector))
   notifications$: Observable<Notifications> = this.store$.pipe(select(notificationsSelector))
   destroy$: Subject<boolean> = new Subject<boolean>();
   
   constructor(
     private store$: Store<AuthStateModel>,
-    private authService: AuthService
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -35,9 +36,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phoneNumber: new FormControl(''),
-      country: new FormControl(''),
-      city: new FormControl('')
+      phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(Constants.PHONE_LENGTH), Validators.pattern(PHONE_REGEX)]),
+      country: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required])
     })
     this.notificationsForm = new FormGroup({
       emailNotifications: new FormControl(''),
@@ -64,16 +65,21 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   onFileSelected(event: any): void {
-    this.selectedFile = event.target.files[0].name;
-    this.authService.changeIcon(this.selectedFile, this.profile.id);
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event) => {
+        this.authService.changeIcon(event.target.result, this.profile.id);
+      }
+    }
   }
 
   onRemoveIcon(): void {
-    this.authService.removeIcon(this.selectedFile, this.profile.id);
+    this.authService.removeIcon(this.profile.id);
   }
 
   onSaveSettings(): void {
-    this.authService.updateUser(new User(this.profile.id, this.profileForm.value, this.profile.createdAt, this.profile.password, this.profile.icon));
+    this.authService.updateProfile(new User(this.profile.id, this.profileForm.value, this.profile.createdAt, this.profile.password, this.profile.icon, this.profile.nickname));
   }
 
   ngOnDestroy(): void {

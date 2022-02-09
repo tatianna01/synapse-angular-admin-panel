@@ -40,12 +40,12 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.registerForm.invalid) {
-      this.snackBar.open("Invalid value form!", '', {
+    if (!this.registerForm.get('agreement').value) {
+      this.snackBar.open('Have you read the terms and conditions?', '', {
         duration: 5000
       });
     } else {
-      this.authService.register(new User(uuidv4(), this.registerForm.value, new Date(), this.registerForm.value.password, 'assets/images/default.png'));
+      this.authService.register(new User(uuidv4(), this.registerForm.value, new Date(), this.registerForm.value.password, 'assets/images/default.png',''));
     }
   }
 

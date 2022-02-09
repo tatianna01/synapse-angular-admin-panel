@@ -1,7 +1,10 @@
 @import '../../../../../assets/styles/_variables.scss';
 
 .app-products-list{
-     width: 100%;
+     width: 98%;
+     display: grid;
+     grid-template-columns: 33% 33% 33%;
+     gap: 1.5em;
 }
 
 .products-header-image-wrapper img {
@@ -17,8 +20,8 @@
 }
 
 .products-header-image-wrapper:after {
-     content:'';
-     position:absolute;
+     content: '';
+     position: absolute;
      left: 0; 
      top: 0;
      width: 100%; 
@@ -123,4 +126,26 @@
 
 :host {
      width: 100%;
+}
+
+@media only screen and (max-width: 870px) {
+     .app-products-list{
+          grid-template-columns: none;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+     }
+}
+
+@media only screen and (max-width: 992px) {
+     .app-products-list{
+          grid-template-columns: 50% 50%;
+     }
+}
+
+@media only screen and (max-width: 1200px) {
+     .app-products-list{
+          grid-template-columns: 50% 50%;
+     }
 }

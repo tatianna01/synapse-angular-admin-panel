@@ -25,20 +25,16 @@ export namespace AuthActions {
 
     export const changeIcon = createAction(
         '[AUTH] change icon',
-        props<{ icon: string, id: string }>()
+        props<{ icon: any, id: string }>()
     );
 
     export const removeIcon = createAction(
         '[AUTH] remove icon',
-        props<{ icon: string, id: string }>()
+        props<{ id: string }>()
     );
     
     export const login = createAction(
         '[AUTH] login user',
         props<{ user: User }>()
-    );
-    
-    export const logout = createAction(
-        '[AUTH] login user'
     );
 }

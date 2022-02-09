@@ -7,7 +7,6 @@ export const authReducer = createReducer(
     on(AuthActions.register, (state, { user }) => ({
         ...state,
         users: [...state.users, user],
-        loggedInUser: user
     })),
     on(AuthActions.createUser, (state, { user }) => ({
         ...state,
@@ -26,21 +25,16 @@ export const authReducer = createReducer(
     })),
     on(AuthActions.login, (state, { user }) => ({
         ...state,
-        loggedInUser: user
     })),
-    on(AuthActions.logout, (state) => ({
-        ...state,
-        loggedInUser: null
-    })), 
     on(AuthActions.changeIcon, (state, { icon, id }) => ({
         ...state,
         users: state.users.map(user => 
             user.id === id ? {
                 ...user, 
-                icon: `../../../assets/images/${icon}`
+                icon: icon
             }: user),
     })),
-    on(AuthActions.removeIcon, (state, { icon, id }) => ({
+    on(AuthActions.removeIcon, (state, { id }) => ({
         ...state,
         users: state.users.map(user => 
             user.id === id ? {
