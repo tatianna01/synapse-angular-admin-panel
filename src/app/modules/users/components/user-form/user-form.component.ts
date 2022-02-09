@@ -55,7 +55,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     this.userId ? this.authService.updateUser(new User(this.userForm.value.id, this.userForm.value, this.user.createdAt, this.user.password, this.user.icon, this.userForm.value.nickname))
-    : this.authService.createUser(new User(uuidv4(), this.userForm.value, new Date(), this.user.password, 'assets/images/default.png', this.userForm.value.nickname));
+    : this.authService.createUser(new User(uuidv4(), this.userForm.value, new Date(), '', 'assets/images/default.png', this.userForm.value.nickname));
   }
   
   ngOnDestroy(): void {
